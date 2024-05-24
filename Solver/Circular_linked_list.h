@@ -16,13 +16,15 @@ namespace rut::miit::llist
 
 		void print();
 
+		void check_index(int index);
+
+		int range_list();
+
 		Node* find_element(int data);
 
-		Node* operator[](const int index);
+		void remove_last();
 
 		void remove_first();
-
-		void remove_last();
 
 		void remove(int data);
 
