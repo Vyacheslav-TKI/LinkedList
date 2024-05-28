@@ -10,11 +10,11 @@ namespace rut::miit::llist
 		*/
 		Node* head;
 	public:
+		Circular_linked_list();
+
 		Circular_linked_list(const std::initializer_list<int>& values);
 
-		bool is_empty();
-
-		void print();
+		std::string print();
 
 		void check_index(int index);
 
@@ -22,13 +22,13 @@ namespace rut::miit::llist
 
 		Node* find_element(int data);
 
-		void remove_last();
-
-		void remove_first();
+		void insert(int data);
 
 		void remove(int data);
 
-		void modify(int index, int data);
+		bool modify(int index, int data);
+
+		friend std::ostream& operator<<(std::ostream& os, const Circular_linked_list list);
 
 		~Circular_linked_list();
 	};

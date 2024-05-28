@@ -1,47 +1,40 @@
 #include "Node.h"
 #include "Circular_linked_list.h"
 #include <initializer_list>
-#include <iostream>
+#include <sstream>
 
 namespace rut::miit::llist 
 {
+	Circular_linked_list::Circular_linked_list() : head(nullptr) {}
+
 	Circular_linked_list::Circular_linked_list(const std::initializer_list<int>& values)
 	{
 		Node* prev = nullptr;
 		for (int val : values)
 		{
-			Node* new_node = new Node(val);
-			if (prev)
-			{
-				prev->next = new_node;
-
-			}
-			prev = new_node;
-			if (!head)
-			{
-				head = new_node;
-			}
-		}
-		if (prev)
-		{
-			prev->next = head;
+			insert(val);
 		}
 	}
 
-	bool Circular_linked_list::is_empty()
+	std::string Circular_linked_list::print()
 	{
-		return (head->next == head->next);
+		std::stringstream ss;
+		Node* temp = head;
+		if (head != nullptr)
+		{
+			do
+			{
+				ss << temp->data << " ";
+				temp = temp->next;
+			} while (temp != head);
+		}
+		return ss.str();
 	}
 
-	void Circular_linked_list::print()
+	std::ostream& operator << (std::ostream& os, const Circular_linked_list& list)
 	{
-		std::cout << head->data << std::endl;
-		Node* next_node = head->next;
-		while (next_node->next != head)
-		{
-			std::cout << next_node->data << std::endl;
-			next_node = next_node->next;
-		}
+		os << list.print();
+		return os;
 	}
 
 	void Circular_linked_list::check_index(int index)
@@ -52,51 +45,36 @@ namespace rut::miit::llist
 		}
 	}
 
-	void Circular_linked_list::remove_first()
-	{
-		Node* current = head;
-		Node* last = nullptr;
-		for (int i = 0; i <= range_list(); i++)
-		{
-			if (current->next == head)
-			{
-				last = current;
-			}
-			current = current->next;
-		}
-		last->next = head->next;
-		delete head;
-	}
-
-	void Circular_linked_list::remove_last() 
-	{
-
-	}
 
 	void Circular_linked_list::remove(int data)
 	{
 		check_index(data);
-		if (data == 0) 
+		if (head == nullptr) 
 		{
-			remove_first();
-		}
-		else
-		{
-
+			return;
 		}
 
-	}
+		Node* temp = head;
+		Node* prev = nullptr;
 
-	int Circular_linked_list::range_list()
-	{
-		int count = 0;
-		Node* next_node = head;
-		while (next_node->next != head)
+		do
 		{
-			count += 1;
-			next_node = next_node->next;
-		}
-		return count;
+			if (temp->data == data)
+			{
+				if (temp == head)
+				{
+					head = head->next;
+				}
+				if (prev != nullptr)
+				{
+					prev->next = temp->next;
+				}
+				delete temp;
+				return;
+			}
+			prev = temp;
+			temp = temp->next;
+		} while (temp != head);
 	}
 
 	Node* Circular_linked_list::find_element(int data)
@@ -115,6 +93,23 @@ namespace rut::miit::llist
 			next_node = next_node->next;
 		}
 		return nullptr;
+	}
+
+	bool Circular_linked_list::modify(int index, int data)
+	{
+		check_index(index);
+
+		Node* node_mod = find_element(index);
+
+		if (node_mod != nullptr)
+		{
+			node_mod->data = data;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	Circular_linked_list::~Circular_linked_list()
