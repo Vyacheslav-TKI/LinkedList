@@ -1,10 +1,10 @@
-#include <iostream>
+п»ї#include <iostream>
 #include "..\Solver\Circular_linked_list.h"
 #include "..\Solver\Node.h"
 
 /**
-* @brief Точка входа в программу
-* @return 0 Программа выполнена успешно
+* @brief РўРѕС‡РєР° РІС…РѕРґР° РІ РїСЂРѕРіСЂР°РјРјСѓ
+* @return 0 РџСЂРѕРіСЂР°РјРјР° РІС‹РїРѕР»РЅРµРЅР° СѓСЃРїРµС€РЅРѕ
 */
 
 int main()
