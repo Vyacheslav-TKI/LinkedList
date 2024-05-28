@@ -1,4 +1,4 @@
-#include "Node.h"
+п»ї#include "Node.h"
 #include <initializer_list>
 namespace rut::miit::llist
 {
@@ -6,7 +6,7 @@ namespace rut::miit::llist
 	{
 	private:
 		/**
-		* @brief "голова" списка
+		* @brief "РіРѕР»РѕРІР°" СЃРїРёСЃРєР°
 		*/
 		Node* head;
 	public:

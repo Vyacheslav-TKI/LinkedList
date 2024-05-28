@@ -1,16 +1,16 @@
-
+п»ї
 namespace rut::miit::llist
 {
 	struct Node
 	{
 	public:
 		/**
-		* @brief значение узла
+		* @brief Р·РЅР°С‡РµРЅРёРµ СѓР·Р»Р°
 		*/
 		int data;
 
 		/**
-		* @brief указатель на следующий узел
+		* @brief СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЃР»РµРґСѓСЋС‰РёР№ СѓР·РµР»
 		*/
 		Node* next;
 		Node(int number);

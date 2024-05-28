@@ -1,4 +1,4 @@
-#include "Node.h"
+п»ї#include "Node.h"
 #include "Circular_linked_list.h"
 #include <initializer_list>
 #include <sstream>
@@ -41,7 +41,7 @@ namespace rut::miit::llist
 	{
 		if (index < 0 || index > range_list())
 		{
-			throw std::out_of_range("Индекс находится за границей массива!");
+			throw std::out_of_range("В»РЅРґРµРєСЃ РЅР°С…РѕРґРёС‚СЃВ¤ Р·Р° РіСЂР°РЅРёС†РµР№ РјР°СЃСЃРёРІР°!");
 		}
 	}
 

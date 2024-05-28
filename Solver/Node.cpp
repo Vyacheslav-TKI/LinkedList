@@ -1,4 +1,4 @@
-#include "Node.h"
+﻿#include "Node.h"
 namespace rut::miit::llist
 {
 	Node::Node(int number)
