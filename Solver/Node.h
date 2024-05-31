@@ -13,7 +13,11 @@ namespace rut::miit::llist
 		* @brief указатель на следующий узел
 		*/
 		Node* next;
-		Node(int number);
+
+		/**
+		* @brief конструктор
+		*/
+		Node(int number, Node* next = nullptr);
 	};
 }
 

@@ -1,9 +1,5 @@
 ﻿#include "Node.h"
 namespace rut::miit::llist
 {
-	Node::Node(int number)
-	{
-		data = number;
-		next = nullptr;
-	}
+	Node::Node(int number, Node* next = nullptr) : data{ number }, next{ nullptr }
 }

@@ -9,8 +9,7 @@ namespace rut::miit::llist
 
 	Circular_linked_list::Circular_linked_list(const std::initializer_list<int>& values)
 	{
-		Node* prev = nullptr;
-		for (int val : values)
+		for (auto& val : values)
 		{
 			insert(val);
 		}
@@ -37,18 +36,22 @@ namespace rut::miit::llist
 		return os;
 	}
 
-	void Circular_linked_list::check_index(int index)
+	bool Circular_linked_list::is_valid_index(size_t index)
 	{
-		if (index < 0 || index > range_list())
+		if (index > range_list())
 		{
-			throw std::out_of_range("»ндекс находитс¤ за границей массива!");
+			return false;
 		}
+		return true;
 	}
 
 
 	void Circular_linked_list::remove(int data)
 	{
-		check_index(data);
+		if (!is_valid_index)
+		{
+			throw std::logic_error("wrong index!");
+		}
 		if (head == nullptr) 
 		{
 			return;
@@ -77,7 +80,25 @@ namespace rut::miit::llist
 		} while (temp != head);
 	}
 
-	Node* Circular_linked_list::find_element(int data)
+	int Circular_linked_list::find_element(int data)
+	{
+		if (head->data == data)
+		{
+			return 0;
+		}
+		Node* next_node = head->next;
+		for (int i = 1; i <= range_list(); i++)
+		{
+			if (next_node->data == data)
+			{
+				return i;
+			}
+			next_node = next_node->next;
+		}
+		return -1;
+	}
+
+	Node* Circular_linked_list::find_element_ptr(int data)
 	{
 		if (head->data == data)
 		{
@@ -97,9 +118,12 @@ namespace rut::miit::llist
 
 	bool Circular_linked_list::modify(int index, int data)
 	{
-		check_index(index);
+		if (!is_valid_index)
+		{
+			throw std::logic_error("wrong index!");
+		}
 
-		Node* node_mod = find_element(index);
+		Node* node_mod = find_element_ptr(index);
 
 		if (node_mod != nullptr)
 		{
@@ -110,6 +134,19 @@ namespace rut::miit::llist
 		{
 			return false;
 		}
+	}
+
+	Circular_linked_list::Circular_linked_list(Circular_linked_list&& other) noexcept
+	{
+		head = other.head;
+		other.head = nullptr;
+	}
+
+	Circular_linked_list& Circular_linked_list::operator=(const Circular_linked_list& other)
+	{
+		Circular_linked_list temp(other);
+		std::swap(this->head, temp.head);
+		return *this;
 	}
 
 	Circular_linked_list::~Circular_linked_list()
