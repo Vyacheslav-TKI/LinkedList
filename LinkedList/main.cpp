@@ -1,9 +1,20 @@
+п»ї#include <iostream>
+#include "..\Solver\Circular_linked_list.h"
+#include "..\Solver\Node.h"
+
 /**
-* @brief Точка входа в программу
-* @return 0 Программа выполнена успешно
+* @brief РўРѕС‡РєР° РІС…РѕРґР° РІ РїСЂРѕРіСЂР°РјРјСѓ
+* @return 0 РџСЂРѕРіСЂР°РјРјР° РІС‹РїРѕР»РЅРµРЅР° СѓСЃРїРµС€РЅРѕ
 */
 
 int main()
 {
+	rut::miit::llist::Circular_linked_list list = { 1, 2, 3, 4 };
+
+	list.insert(5);
+	list.remove(3);
+
+	std::cout << list << std::endl;
+
 	return 0;
 }
